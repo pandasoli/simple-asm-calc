@@ -137,13 +137,23 @@ sprintLF:
   call sprint
 
   push eax
+  push ebx
+
   mov eax, 0Ah
   push eax
+
   mov eax, esp
+
+  ; Guarantee null-terminator after newline
+  mov ebx, 0
+  push ebx
+
   call sprint
 
   pop eax
   pop eax
+  pop eax
+  pop ebx
   ret
 
 ; void exit()
